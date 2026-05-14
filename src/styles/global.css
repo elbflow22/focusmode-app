@@ -260,6 +260,11 @@ html, body { margin: 0; padding: 0; background: #0E0E10; }
   letter-spacing: 0;
 }
 .fm1 .pain-card p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+/* Dimensions follows pain (a cards section). Pain's grid mb + section
+   padding-bottom already provide 256px of settle space below its cards;
+   stacking another 160px before the "The solution" eyebrow read as
+   excessive. Same pattern as the founder override. */
+.fm1 .dimensions { padding-top: 96px; }
 .fm1 .dimensions h2 { margin-bottom: 22px; text-align: center; max-width: 780px; margin-left: auto; margin-right: auto; }
 .fm1 .dimensions__lede {
   text-align: center;
@@ -317,7 +322,13 @@ html, body { margin: 0; padding: 0; background: #0E0E10; }
   margin-bottom: 18px;
 }
 .fm1 .dim-card p { font-size: 15px; color: var(--muted); line-height: 1.6; }
-.fm1 .rule { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+/* Same pattern: rule follows dimensions (cards), trim its top padding. */
+.fm1 .rule {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-top: 96px;
+}
 .fm1 .rule__layout { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 @media (max-width: 860px) { .fm1 .rule__layout { grid-template-columns: 1fr; gap: 40px; } }
 .fm1 .rule h2 { margin-bottom: 20px; }
