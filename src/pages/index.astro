@@ -7,7 +7,7 @@
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import DownloadButtons from '~/components/DownloadButtons.astro';
 import { Image } from 'astro:assets';
-import founderImage from '~/assets/founder.png';
+import founderImage from '~/assets/founder.jpg';
 import { SITE } from '~/consts';
 import { absoluteUrl } from '~/lib/url';
 ---
@@ -259,7 +259,7 @@ import { absoluteUrl } from '~/lib/url';
           <Image
             src={founderImage}
             alt="Pascal Weihrauch, founder of Focus Mode One"
-            widths={[340, 680, 1020]}
+            widths={[340, 680, 750]}
             sizes="(max-width: 860px) 80vw, 340px"
             loading="lazy"
           />
