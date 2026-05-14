@@ -27,7 +27,12 @@ const ogImageUrl = ogImage
 <link rel="canonical" href={canonicalURL} />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
+<!-- Favicon: same transparent FM mark used by legal.focusmode.one.
+     PNG works in all browsers including older ones; SVG kept as a
+     larger crisp source for browsers that prefer it. -->
+<link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/favicon.png" />
 
 <!-- Fonts: Fraunces (headlines, italics) + Geist (body) — matches the
      systeme landing's established stack. Preconnect so the font request
