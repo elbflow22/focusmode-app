@@ -210,7 +210,17 @@ html, body { margin: 0; padding: 0; background: #0E0E10; }
 }
 .fm1 .waitlist button:hover { background: var(--athena-hover); }
 .fm1 .hero__legal { font-size: 12px; color: var(--meta); margin-top: 10px; }
-.fm1 .pain { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+/* .pain always follows the hero. The hero ends with a thin disclaimer
+   line — visually light — so 160px of pain padding-top reads as dead
+   space stacking on the hero's own 80px. Tighten just this one
+   transition; later section boundaries keep the 160px breathing room
+   they need to read as boundaries between heavier content. */
+.fm1 .pain {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-top: 96px;
+}
 .fm1 .pain h2 { max-width: 720px; margin-bottom: 22px; }
 .fm1 .pain__lede { max-width: 580px; margin-bottom: 72px; font-size: 17px; }
 .fm1 .pain__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
