@@ -1,0 +1,26 @@
+---
+import { STORES } from '~/consts';
+---
+
+<nav class="nav" aria-label="Primary">
+  <div class="container">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">FM</span>
+      <span>Focus Mode</span>
+    </a>
+    <div class="nav-links">
+      <a href="#problem">The problem</a>
+      <a href="#solution">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#founder">Why</a>
+    </div>
+    <a
+      class="cta-mini"
+      href={STORES.APP_STORE_URL}
+      data-ph-capture-attribute-cta="nav-ios"
+      rel="noopener"
+    >
+      Download
+    </a>
+  </div>
+</nav>

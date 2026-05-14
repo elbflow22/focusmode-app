@@ -1,0 +1,54 @@
+---
+import BaseHead from '~/components/BaseHead.astro';
+import Nav from '~/components/Nav.astro';
+import Footer from '~/components/Footer.astro';
+import JsonLd from '~/components/JsonLd.astro';
+import {
+  organizationJsonLd,
+  personJsonLd,
+  websiteJsonLd,
+  mobileAppJsonLd,
+} from '~/lib/jsonld';
+import { SITE } from '~/consts';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL: string;
+  ogImage?: string;
+  /** Hide nav/footer (used by the /app redirect page). */
+  bare?: boolean;
+}
+
+const { title, description, canonicalURL, ogImage, bare = false } = Astro.props;
+
+// Always-on entity graph. Adding MobileApplication so the landing
+// itself describes the downloadable product (drives Google's app rich
+// results) — that's the schema this page in particular needs.
+const alwaysOn = [
+  organizationJsonLd(),
+  personJsonLd(),
+  websiteJsonLd(),
+  mobileAppJsonLd(),
+];
+---
+
+<!doctype html>
+<html lang={SITE.language}>
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      canonicalURL={canonicalURL}
+      ogImage={ogImage}
+    />
+    <JsonLd data={alwaysOn} />
+  </head>
+  <body>
+    {!bare && <Nav />}
+    <main id="main">
+      <slot />
+    </main>
+    {!bare && <Footer />}
+  </body>
+</html>

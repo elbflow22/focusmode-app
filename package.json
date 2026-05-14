@@ -1,0 +1,18 @@
+{
+  "name": "focusmode-app",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Focus Mode One — landing page. Static Astro site at focusmode.one. Single conversion surface: 'download app' clicks.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.3.2",
+    "@astrojs/sitemap": "^3.7.2"
+  }
+}

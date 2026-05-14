@@ -1,0 +1,218 @@
+---
+// The landing page. Nine sections, matched to the structural map of
+// the current systeme.io page (focusmode.one/app). Copy here is
+// scaffolding — replace with your real systeme copy. Each section is a
+// natural slot to A/B test independently in PostHog.
+
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import DownloadButtons from '~/components/DownloadButtons.astro';
+import { SITE, AUTHOR } from '~/consts';
+import { absoluteUrl } from '~/lib/url';
+---
+
+<BaseLayout
+  title={SITE.title}
+  description={SITE.description}
+  canonicalURL={absoluteUrl('/')}
+>
+  <!-- ========== 1. HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <p class="eyebrow">Focus Mode One — for iOS · Android coming</p>
+      <h1>Plan in quarters. Live in weeks. Win the day.</h1>
+      <p class="lede">
+        The opposite of a to-do list. Three focus areas at most, one direction, visible progress. Replace task theatre with a planning surface built for the work that actually moves the needle.
+      </p>
+      <div class="cta-row">
+        <DownloadButtons location="hero" variant="primary" />
+      </div>
+      <div class="meta-row">
+        <span>7-day free trial</span>
+        <span>·</span>
+        <span>Cancel anytime</span>
+        <span>·</span>
+        <span>iOS 17+</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 2. PROBLEM ========== -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <p class="eyebrow">The problem you keep living with</p>
+      <h2>You finished the day busy and you can't say what moved.</h2>
+      <p class="lede">
+        To-do lists are great at remembering. They're terrible at directing. By the time something earns a slot on a flat list, the interesting decisions have already been skipped.
+      </p>
+      <div class="grid">
+        <div class="item">
+          <p class="num">01</p>
+          <h3>Everything is the same priority</h3>
+          <p>Urgent and important fight for the same slot. Whichever shouts loudest wins. The quiet, compounding work goes last and rarely gets done.</p>
+        </div>
+        <div class="item">
+          <p class="num">02</p>
+          <h3>Activity replaces direction</h3>
+          <p>A long list feels like progress. It isn't. You can clear thirty checkboxes and end the week exactly where you started — busy without moving.</p>
+        </div>
+        <div class="item">
+          <p class="num">03</p>
+          <h3>The week never reflects the quarter</h3>
+          <p>You decided what mattered in January. By March your weeks are full of things January-you wouldn't recognise. There's no surface that closes that loop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3. SOLUTION ========== -->
+  <section class="solution" id="solution">
+    <div class="container">
+      <p class="eyebrow">Three dimensions. One view.</p>
+      <h2>One screen that keeps your weeks honest about the quarter.</h2>
+      <p class="lede">
+        Focus Mode One lays the same focus across three time horizons. Each horizon answers a different question; together they make drift visible the moment it starts.
+      </p>
+      <div class="dims">
+        <div class="dim">
+          <p class="role">The arrow</p>
+          <h3>Quarter</h3>
+          <p class="count">Up to 3 themes · 13 weeks</p>
+          <p>The destination. One or two themes you intend to push forward over the next thirteen weeks. No grading, no committee — just a clear beam of attention.</p>
+        </div>
+        <div class="dim">
+          <p class="role">The bridge</p>
+          <h3>Week</h3>
+          <p class="count">Up to 3 focus areas</p>
+          <p>This week's translation of the quarter. The bridge between intent and execution. Mondays answer one question: what's this week's contribution to the theme?</p>
+        </div>
+        <div class="dim">
+          <p class="role">The execution</p>
+          <h3>Today</h3>
+          <p class="count">Up to 3 today-items</p>
+          <p>Three things that actually advance the week. Everything else is admin. The smallest unit, but the one that finally has weight — because the levels above gave it weight.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. RULE OF THREE ========== -->
+  <section class="rule">
+    <div class="container">
+      <p class="eyebrow">The rule of three</p>
+      <h2>Three is what makes it work. Four is what makes it fail.</h2>
+      <p class="lede">
+        Most planning tools optimise for capacity. Focus Mode One optimises for selection. Constraint is the feature, not the limitation.
+      </p>
+      <div class="stats">
+        <div class="stat">
+          <p class="big">3</p>
+          <h3>Quarter themes max</h3>
+          <p>The point of focus is what you don't do. Three is generous; one is often right.</p>
+        </div>
+        <div class="stat">
+          <p class="big">3</p>
+          <h3>Weekly focus areas</h3>
+          <p>Every week answers to the quarter — three slots make the answer visible.</p>
+        </div>
+        <div class="stat">
+          <p class="big">3</p>
+          <h3>Today-items</h3>
+          <p>Three things that move you. Everything else lives somewhere else.</p>
+        </div>
+        <div class="stat">
+          <p class="big">9</p>
+          <h3>Items per day, max</h3>
+          <p>3 × 3 across all three horizons. A cap on the surface, not on your ambition.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5. FEATURES ========== -->
+  <section class="features" id="features">
+    <div class="container">
+      <p class="eyebrow">What's inside</p>
+      <h2>The eight things that make this an FM1 product, not another planner.</h2>
+      <p class="lede">
+        Replace this with the eight feature blurbs from your systeme page. The grid auto-flows so you can add or remove items without touching layout.
+      </p>
+      <div class="grid">
+        <div class="item">
+          <h3>Quarter, week, day on one screen</h3>
+          <p>Three horizons, three columns. Never a context switch between "where am I going" and "what am I doing."</p>
+        </div>
+        <div class="item">
+          <h3>Slide to start a Focus Mode session</h3>
+          <p>One gesture to commit. A session has a single intent — the timer ends, you reflect, you move on.</p>
+        </div>
+        <div class="item">
+          <h3>Weekly Promise tracker</h3>
+          <p>Did the week match the quarter? A visual signal that gets sharper each week, not a guilt-trip retrospective.</p>
+        </div>
+        <div class="item">
+          <h3>Someday Shelf</h3>
+          <p>Ideas you can't act on this week have a home that isn't your today list. Restore with one tap when the quarter shifts.</p>
+        </div>
+        <div class="item">
+          <h3>Quarter-aware planning prompts</h3>
+          <p>Mondays don't start with a blank slate. The app reminds you what this quarter is about before you decide what this week is for.</p>
+        </div>
+        <div class="item">
+          <h3>Single-purpose by design</h3>
+          <p>No tags, no projects, no comments, no boards. Every feature earns its place by serving the three-horizon view or it doesn't ship.</p>
+        </div>
+        <div class="item">
+          <h3>Local-first, your data your device</h3>
+          <p>The app works without an account. Sign-in is optional and only enables cross-device sync — never required for the core experience.</p>
+        </div>
+        <div class="item">
+          <h3>Built by one person, in public</h3>
+          <p>No team, no committee, no roadmap politics. You write to the founder, the founder builds it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6. FOUNDER ========== -->
+  <section class="founder" id="founder">
+    <div class="container">
+      <p class="eyebrow">Why I built this</p>
+      <div class="layout">
+        <div class="body">
+          <h2>I'm not a developer. I built this because nothing else was structured for one person, one quarter.</h2>
+          <p>
+            Every productivity app I tried offered the daily list and called it planning. The ones that took planning seriously buried it in team-OKR machinery — shared goals, weighted progress, end-of-period reviews. I wanted the personal-scale version. One person, two themes, thirteen weeks, no meeting at the end.
+          </p>
+          <p>
+            So I built it. In a day. With AI as a pair-programmer. Focus Mode One is the tool I wanted on my phone for the kind of weeks where you finish busy and can't say what moved.
+          </p>
+          <p class="signature">— {AUTHOR.name}, {AUTHOR.jobTitle}</p>
+        </div>
+        <div class="photo">
+          <img
+            src="/founder.jpg"
+            alt="Pascal Weihrauch, founder of Focus Mode One"
+            loading="lazy"
+            width="240"
+            height="240"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 7. FINAL CTA ========== -->
+  <section class="final-cta" id="download">
+    <div class="container">
+      <p class="eyebrow">Your next 90 days</p>
+      <h2>Pick one theme. Make thirteen weeks count.</h2>
+      <p class="lede">
+        Free for seven days. Less than the cost of a coffee thereafter. Cancel anytime — your local data stays yours.
+      </p>
+      <div class="cta-row">
+        <DownloadButtons location="final" variant="primary" />
+      </div>
+      <p class="trial">7-day free trial · No credit card required</p>
+    </div>
+  </section>
+</BaseLayout>

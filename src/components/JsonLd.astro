@@ -1,0 +1,13 @@
+---
+// Renders a JSON-LD <script>. set:html with JSON.stringify avoids
+// HTML-escape mangling that breaks structured-data parsers.
+
+interface Props {
+  data: object | object[];
+}
+
+const { data } = Astro.props;
+const payload = JSON.stringify(data);
+---
+
+<script type="application/ld+json" set:html={payload} />

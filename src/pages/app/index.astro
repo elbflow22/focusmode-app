@@ -1,0 +1,28 @@
+---
+// Backwards-compat redirect: focusmode.one/app → focusmode.one/
+// The old systeme.io URL was /app; any existing inbound link (ads,
+// App Store listing, business cards) lands here. Meta-refresh +
+// JS for instant redirect; canonical points at the new home so
+// search engines consolidate signal.
+
+import { SITE } from '~/consts';
+import { absoluteUrl } from '~/lib/url';
+const target = absoluteUrl('/');
+---
+
+<!doctype html>
+<html lang={SITE.language}>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Focus Mode One</title>
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <meta name="robots" content="noindex" />
+    <script is:inline define:vars={{ target }}>
+      window.location.replace(target);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to <a href={target}>{target}</a>…</p>
+  </body>
+</html>
