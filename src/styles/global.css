@@ -81,8 +81,16 @@ html, body { margin: 0; padding: 0; background: #0E0E10; }
 .fm1 .eyebrow--hermes { color: var(--hermes); }
 .fm1 .eyebrow--athena { color: var(--athena); }
 .fm1 .container { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
-.fm1 section { padding: 120px 0; }
-@media (max-width: 640px) { .fm1 section { padding: 80px 0; } }
+.fm1 section { padding: 160px 0; }
+@media (max-width: 640px) { .fm1 section { padding: 96px 0; } }
+
+/* Section borders need to read more clearly than card borders — bg and
+   surface (#0E0E10 vs #18181C) are very close in luminance, so a subtle
+   8% white border disappears at the boundary. Override only on the
+   sections that have a different bg colour from their neighbours. */
+.fm1 .pain,
+.fm1 .rule,
+.fm1 .founder { border-color: var(--border-strong); }
 .fm1 .nav {
   position: sticky;
   top: 0;
