@@ -223,7 +223,12 @@ html, body { margin: 0; padding: 0; background: #0E0E10; }
 }
 .fm1 .pain h2 { max-width: 720px; margin-bottom: 22px; }
 .fm1 .pain__lede { max-width: 580px; margin-bottom: 72px; font-size: 17px; }
-.fm1 .pain__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 96px; }
+/* Pain's grid mb is smaller (32 vs 96) because pain is the one card
+   section on surface (--surface, lighter) rather than page bg. Lighter
+   colour reads visually heavier — equal pixel padding feels bigger,
+   so trimming compensates. Net pain→dim gap matches dim→rule visually
+   even though the pixel total is smaller. */
+.fm1 .pain__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
 @media (max-width: 860px) { .fm1 .pain__grid { grid-template-columns: 1fr; } }
 .fm1 .pain-card {
   padding: 28px 26px;
