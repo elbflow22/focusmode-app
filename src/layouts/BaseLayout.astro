@@ -16,15 +16,12 @@ interface Props {
   description: string;
   canonicalURL: string;
   ogImage?: string;
-  /** Hide nav/footer (used by the /app redirect page). */
+  /** Skip the .fm1 chrome (nav + footer + reveal). Used by /app redirect. */
   bare?: boolean;
 }
 
 const { title, description, canonicalURL, ogImage, bare = false } = Astro.props;
 
-// Always-on entity graph. Adding MobileApplication so the landing
-// itself describes the downloadable product (drives Google's app rich
-// results) — that's the schema this page in particular needs.
 const alwaysOn = [
   organizationJsonLd(),
   personJsonLd(),
@@ -45,10 +42,49 @@ const alwaysOn = [
     <JsonLd data={alwaysOn} />
   </head>
   <body>
-    {!bare && <Nav />}
-    <main id="main">
+    {bare ? (
       <slot />
-    </main>
-    {!bare && <Footer />}
+    ) : (
+      <div class="fm1">
+        <Nav />
+        <main>
+          <slot />
+        </main>
+        <Footer />
+      </div>
+    )}
+
+    {!bare && (
+      <script is:inline>
+        // Scroll-reveal. Adds .is-revealed to [data-reveal] elements when
+        // they enter the viewport (or already are, on load). Bails out for
+        // prefers-reduced-motion and for environments without
+        // IntersectionObserver, leaving the elements fully visible.
+        (function () {
+          var els = document.querySelectorAll('[data-reveal]');
+          if (!els.length) return;
+
+          var reduce =
+            window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+          if (reduce || typeof IntersectionObserver === 'undefined') {
+            els.forEach(function (el) { el.classList.add('is-revealed'); });
+            return;
+          }
+
+          var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+
+          els.forEach(function (el) { observer.observe(el); });
+        })();
+      </script>
+    )}
   </body>
 </html>

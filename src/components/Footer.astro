@@ -1,16 +1,18 @@
 ---
-import { ORG } from '~/consts';
 const year = new Date().getFullYear();
 ---
 
-<footer class="site-footer">
+<footer class="footer">
   <div class="container">
-    <p>© {year} {ORG.legalName}.</p>
-    <div class="links">
-      <a href="https://blog.focusmode.one">Blog</a>
-      <a href="https://legal.focusmode.one/imprint.html">Imprint</a>
-      <a href="https://legal.focusmode.one/terms.html">Terms</a>
-      <a href="https://legal.focusmode.one/privacy.html">Privacy</a>
+    <div class="footer__inner">
+      <span>© {year} Riverland International GmbH</span>
+      <div class="footer__links">
+        <a href="https://blog.focusmode.one">Blog</a>
+        <a href="https://legal.focusmode.one/imprint.html">Imprint</a>
+        <a href="https://legal.focusmode.one/terms.html">Terms</a>
+        <a href="https://legal.focusmode.one/privacy.html">Privacy</a>
+        <a href="https://legal.focusmode.one/">DE / EN</a>
+      </div>
     </div>
   </div>
 </footer>

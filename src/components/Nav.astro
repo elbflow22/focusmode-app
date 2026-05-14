@@ -1,26 +1,19 @@
 ---
-import { STORES } from '~/consts';
+import { Image } from 'astro:assets';
+import fmLogo from '~/assets/fm1-logo.png';
 ---
 
-<nav class="nav" aria-label="Primary">
-  <div class="container">
-    <a class="brand" href="/">
-      <span class="brand-mark" aria-hidden="true">FM</span>
-      <span>Focus Mode</span>
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand">
+      <Image src={fmLogo} alt="" width={56} height={56} loading="eager" />
+      Focus Mode One
     </a>
-    <div class="nav-links">
-      <a href="#problem">The problem</a>
-      <a href="#solution">How it works</a>
+    <div class="nav__links">
+      <a href="#dimensions">How it works</a>
       <a href="#features">Features</a>
       <a href="#founder">Why</a>
+      <a href="#download" class="nav__cta" data-ph-capture-attribute-cta="nav-download">Download</a>
     </div>
-    <a
-      class="cta-mini"
-      href={STORES.APP_STORE_URL}
-      data-ph-capture-attribute-cta="nav-ios"
-      rel="noopener"
-    >
-      Download
-    </a>
   </div>
 </nav>

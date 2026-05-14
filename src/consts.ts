@@ -4,9 +4,9 @@
 
 export const SITE = {
   url: 'https://focusmode.one',
-  title: 'Focus Mode One — focused planning in quarters, weeks, and days',
+  title: 'Focus Mode One — one app for your quarter, week, and today',
   description:
-    'Focus Mode One is the app for focused planning in quarters, weeks, and days. Built for people tired of to-do list theatre. Download for iOS — Android coming.',
+    'Focus Mode One wires your 90-day vision to today’s next 90 minutes — the only app where quarterly goals, weekly bridges, and daily tasks live in one connected view. iOS now, Android coming.',
   language: 'en',
   locale: 'en_US',
 } as const;
@@ -56,5 +56,5 @@ export const APP = {
   price: '0',
   priceCurrency: 'EUR',
   description:
-    'Plan in quarters, weeks, and days. The opposite of a to-do list — three focus areas at most, one direction, visible progress.',
+    'One app for your quarter, week, and today. Wires 90-day goals to the next 90 minutes — so your daily tasks always trace back to what actually matters.',
 } as const;

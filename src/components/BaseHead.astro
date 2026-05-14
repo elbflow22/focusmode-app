@@ -29,12 +29,15 @@ const ogImageUrl = ogImage
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-<!-- Fonts (DM Serif Display / DM Sans / DM Mono) -->
+<!-- Fonts: Fraunces (headlines, italics) + Geist (body) — matches the
+     systeme landing's established stack. Preconnect so the font request
+     fires in parallel with the stylesheet, not after it. font-display:swap
+     is in the URL so text isn't blocked by the font fetch. -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Geist:wght@400;500;600;700&display=swap"
 />
 
 <!-- Open Graph -->

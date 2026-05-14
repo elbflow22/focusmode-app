@@ -1,12 +1,14 @@
 ---
-// The landing page. Nine sections, matched to the structural map of
-// the current systeme.io page (focusmode.one/app). Copy here is
-// scaffolding — replace with your real systeme copy. Each section is a
-// natural slot to A/B test independently in PostHog.
+// The landing page. Sections + copy match the systeme.io original Pascal
+// supplied; rebuilding it in Astro brings: AEO-grade JSON-LD, scroll-reveal,
+// Astro <Image> optimization (sharp generates WebP variants at build), and
+// PostHog hooks via data-ph-capture-attribute-cta on every download CTA.
 
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import DownloadButtons from '~/components/DownloadButtons.astro';
-import { SITE, AUTHOR } from '~/consts';
+import { Image } from 'astro:assets';
+import founderImage from '~/assets/founder.jpg';
+import { SITE } from '~/consts';
 import { absoluteUrl } from '~/lib/url';
 ---
 
@@ -15,204 +17,269 @@ import { absoluteUrl } from '~/lib/url';
   description={SITE.description}
   canonicalURL={absoluteUrl('/')}
 >
-  <!-- ========== 1. HERO ========== -->
-  <section class="hero" id="hero">
-    <div class="container">
-      <p class="eyebrow">Focus Mode One — for iOS · Android coming</p>
-      <h1>Plan in quarters. Live in weeks. Win the day.</h1>
-      <p class="lede">
-        The opposite of a to-do list. Three focus areas at most, one direction, visible progress. Replace task theatre with a planning surface built for the work that actually moves the needle.
-      </p>
-      <div class="cta-row">
-        <DownloadButtons location="hero" variant="primary" />
-      </div>
-      <div class="meta-row">
-        <span>7-day free trial</span>
-        <span>·</span>
-        <span>Cancel anytime</span>
-        <span>·</span>
-        <span>iOS 17+</span>
-      </div>
+  <section class="hero container" id="top">
+    <div class="hero__label" data-reveal>Quarter · Week · Today — in one app</div>
+    <h1 data-reveal style="--reveal-delay: 80ms">
+      Your big goals and today's tasks.<br />One app. <em>No switching.</em>
+    </h1>
+    <p class="hero__sub" data-reveal style="--reveal-delay: 160ms">
+      You set a quarterly goal in Notion. Your todo list lives in Apple Reminders. Your calendar forgets the why. Focus Mode One is the one place where your 90&#8209;day vision and today's next 90 minutes are wired together — so you actually ship what matters.
+    </p>
+    <div class="hero__cta" id="download" data-reveal style="--reveal-delay: 240ms">
+      <DownloadButtons location="hero" variant="hero" />
+      <p class="hero__legal">7&#8209;day free trial on any tier. Cancel anytime in App Store settings.</p>
     </div>
   </section>
 
-  <!-- ========== 2. PROBLEM ========== -->
-  <section class="problem" id="problem">
+  <section class="pain">
     <div class="container">
-      <p class="eyebrow">The problem you keep living with</p>
-      <h2>You finished the day busy and you can't say what moved.</h2>
-      <p class="lede">
-        To-do lists are great at remembering. They're terrible at directing. By the time something earns a slot on a flat list, the interesting decisions have already been skipped.
+      <span class="eyebrow" data-reveal>The problem you keep living with</span>
+      <h2 data-reveal style="--reveal-delay: 80ms">
+        You don't need another app. You need <em>connection</em>.
+      </h2>
+      <p class="pain__lede" data-reveal style="--reveal-delay: 160ms">
+        The average productivity person uses five tools. And re-builds the link between their vision and their day every single Monday. The link is the bottleneck.
       </p>
-      <div class="grid">
-        <div class="item">
-          <p class="num">01</p>
-          <h3>Everything is the same priority</h3>
-          <p>Urgent and important fight for the same slot. Whichever shouts loudest wins. The quiet, compounding work goes last and rarely gets done.</p>
+      <div class="pain__grid">
+        <div class="pain-card" data-reveal style="--reveal-delay: 240ms">
+          <div class="pain-card__num">01</div>
+          <h3>Goals die in a separate app</h3>
+          <p>Your quarter plan lives in a doc you opened once in January. By March, it's a graveyard.</p>
         </div>
-        <div class="item">
-          <p class="num">02</p>
-          <h3>Activity replaces direction</h3>
-          <p>A long list feels like progress. It isn't. You can clear thirty checkboxes and end the week exactly where you started — busy without moving.</p>
+        <div class="pain-card" data-reveal style="--reveal-delay: 320ms">
+          <div class="pain-card__num">02</div>
+          <h3>Today's tasks have no why</h3>
+          <p>Your todo list is full. But nothing on it moves your actual goals forward. You finish the day tired and unclear.</p>
         </div>
-        <div class="item">
-          <p class="num">03</p>
-          <h3>The week never reflects the quarter</h3>
-          <p>You decided what mattered in January. By March your weeks are full of things January-you wouldn't recognise. There's no surface that closes that loop.</p>
+        <div class="pain-card" data-reveal style="--reveal-delay: 400ms">
+          <div class="pain-card__num">03</div>
+          <h3>Sunday planning is a chore</h3>
+          <p>You spend an hour every weekend rebuilding the bridge between vision and week. Then ignore it by Wednesday.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 3. SOLUTION ========== -->
-  <section class="solution" id="solution">
-    <div class="container">
-      <p class="eyebrow">Three dimensions. One view.</p>
-      <h2>One screen that keeps your weeks honest about the quarter.</h2>
-      <p class="lede">
-        Focus Mode One lays the same focus across three time horizons. Each horizon answers a different question; together they make drift visible the moment it starts.
-      </p>
-      <div class="dims">
-        <div class="dim">
-          <p class="role">The arrow</p>
-          <h3>Quarter</h3>
-          <p class="count">Up to 3 themes · 13 weeks</p>
-          <p>The destination. One or two themes you intend to push forward over the next thirteen weeks. No grading, no committee — just a clear beam of attention.</p>
-        </div>
-        <div class="dim">
-          <p class="role">The bridge</p>
-          <h3>Week</h3>
-          <p class="count">Up to 3 focus areas</p>
-          <p>This week's translation of the quarter. The bridge between intent and execution. Mondays answer one question: what's this week's contribution to the theme?</p>
-        </div>
-        <div class="dim">
-          <p class="role">The execution</p>
-          <h3>Today</h3>
-          <p class="count">Up to 3 today-items</p>
-          <p>Three things that actually advance the week. Everything else is admin. The smallest unit, but the one that finally has weight — because the levels above gave it weight.</p>
-        </div>
+  <section class="dimensions container" id="dimensions">
+    <span class="eyebrow" data-reveal>The solution</span>
+    <h2 data-reveal style="--reveal-delay: 80ms">
+      Three dimensions. One view.<br />Every day.
+    </h2>
+    <p class="dimensions__lede" data-reveal style="--reveal-delay: 160ms">
+      Focus Mode One is built around one idea: your quarter, your week, and your day should live in the same place — and talk to each other.
+    </p>
+    <div class="dim-grid">
+      <div class="dim-card dim-card--athena" data-reveal style="--reveal-delay: 240ms">
+        <div class="dim-card__label">Quarter</div>
+        <h3>The arrow.</h3>
+        <span class="dim-card__limit">Max 3 goals</span>
+        <p>
+          What matters in the next 90 days. A guided Focus Future ritual turns a blank page into three concrete outcomes you actually commit to.
+        </p>
+      </div>
+      <div class="dim-card dim-card--hermes" data-reveal style="--reveal-delay: 320ms">
+        <div class="dim-card__label">Week</div>
+        <h3>The bridge.</h3>
+        <span class="dim-card__limit">3 ideally · max 6</span>
+        <p>
+          What actually ships this week. A weekly planning wizard pulls from your quarter — so the link is built for you, not by you.
+        </p>
+      </div>
+      <div class="dim-card dim-card--eos" data-reveal style="--reveal-delay: 400ms">
+        <div class="dim-card__label">Today</div>
+        <h3>The execution.</h3>
+        <span class="dim-card__limit">3 big · 6 supporting</span>
+        <p>
+          What you do in the next eight hours. Each day task links back to its week goal, which links to its quarter goal. No orphans.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ========== 4. RULE OF THREE ========== -->
   <section class="rule">
     <div class="container">
-      <p class="eyebrow">The rule of three</p>
-      <h2>Three is what makes it work. Four is what makes it fail.</h2>
-      <p class="lede">
-        Most planning tools optimise for capacity. Focus Mode One optimises for selection. Constraint is the feature, not the limitation.
-      </p>
-      <div class="stats">
-        <div class="stat">
-          <p class="big">3</p>
-          <h3>Quarter themes max</h3>
-          <p>The point of focus is what you don't do. Three is generous; one is often right.</p>
+      <div class="rule__layout">
+        <div>
+          <span class="eyebrow" data-reveal>The rule of three</span>
+          <h2 data-reveal style="--reveal-delay: 80ms">
+            Less, by design.<br />That's what focus <em>is</em>.
+          </h2>
+          <p data-reveal style="--reveal-delay: 160ms">
+            Most productivity apps let you drown in endless tasks. Focus Mode One enforces limits — because focus isn't deciding what to do. It's deciding what <strong style="color:#F0EFE8">not</strong> to do.
+          </p>
+          <p data-reveal style="--reveal-delay: 240ms">
+            Hit the cap and the app won't let you add more. Painful at first. Then liberating.
+          </p>
         </div>
-        <div class="stat">
-          <p class="big">3</p>
-          <h3>Weekly focus areas</h3>
-          <p>Every week answers to the quarter — three slots make the answer visible.</p>
-        </div>
-        <div class="stat">
-          <p class="big">3</p>
-          <h3>Today-items</h3>
-          <p>Three things that move you. Everything else lives somewhere else.</p>
-        </div>
-        <div class="stat">
-          <p class="big">9</p>
-          <h3>Items per day, max</h3>
-          <p>3 × 3 across all three horizons. A cap on the surface, not on your ambition.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 5. FEATURES ========== -->
-  <section class="features" id="features">
-    <div class="container">
-      <p class="eyebrow">What's inside</p>
-      <h2>The eight things that make this an FM1 product, not another planner.</h2>
-      <p class="lede">
-        Replace this with the eight feature blurbs from your systeme page. The grid auto-flows so you can add or remove items without touching layout.
-      </p>
-      <div class="grid">
-        <div class="item">
-          <h3>Quarter, week, day on one screen</h3>
-          <p>Three horizons, three columns. Never a context switch between "where am I going" and "what am I doing."</p>
-        </div>
-        <div class="item">
-          <h3>Slide to start a Focus Mode session</h3>
-          <p>One gesture to commit. A session has a single intent — the timer ends, you reflect, you move on.</p>
-        </div>
-        <div class="item">
-          <h3>Weekly Promise tracker</h3>
-          <p>Did the week match the quarter? A visual signal that gets sharper each week, not a guilt-trip retrospective.</p>
-        </div>
-        <div class="item">
-          <h3>Someday Shelf</h3>
-          <p>Ideas you can't act on this week have a home that isn't your today list. Restore with one tap when the quarter shifts.</p>
-        </div>
-        <div class="item">
-          <h3>Quarter-aware planning prompts</h3>
-          <p>Mondays don't start with a blank slate. The app reminds you what this quarter is about before you decide what this week is for.</p>
-        </div>
-        <div class="item">
-          <h3>Single-purpose by design</h3>
-          <p>No tags, no projects, no comments, no boards. Every feature earns its place by serving the three-horizon view or it doesn't ship.</p>
-        </div>
-        <div class="item">
-          <h3>Local-first, your data your device</h3>
-          <p>The app works without an account. Sign-in is optional and only enables cross-device sync — never required for the core experience.</p>
-        </div>
-        <div class="item">
-          <h3>Built by one person, in public</h3>
-          <p>No team, no committee, no roadmap politics. You write to the founder, the founder builds it.</p>
+        <div class="rule__stats">
+          <div class="stat stat--athena" data-reveal style="--reveal-delay: 160ms">
+            <div class="stat__num">3</div>
+            <div class="stat__text">quarterly goals. <strong>Three is the hard cap</strong> — no overflow. Focus Future wizard guides you to the right three.</div>
+          </div>
+          <div class="stat stat--hermes" data-reveal style="--reveal-delay: 240ms">
+            <div class="stat__num">3</div>
+            <div class="stat__text">weekly goals, ideally. <strong>Max 6</strong> if the week demands it. Pulled forward from the quarter via Weekly Launch Pad.</div>
+          </div>
+          <div class="stat stat--eos" data-reveal style="--reveal-delay: 320ms">
+            <div class="stat__num">9</div>
+            <div class="stat__text">daily slots max. <strong>3 priorities + 6 supporting</strong>. Or a 1/3/5 mix if that's your rhythm. Every slot traces back to a bigger goal.</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 6. FOUNDER ========== -->
+  <section class="features container" id="features">
+    <span class="eyebrow" style="display:block;text-align:center" data-reveal>What's inside</span>
+    <h2 data-reveal style="--reveal-delay: 80ms">One app. Every ritual.</h2>
+    <p class="features__lede" data-reveal style="--reveal-delay: 160ms">
+      Built for deep work, not shallow busywork. Every feature exists because it helps you connect vision to execution.
+    </p>
+    <div class="feat-grid">
+
+      <div class="feat feat--eos" data-reveal style="--reveal-delay: 40ms">
+        <div class="feat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+          </svg>
+        </div>
+        <h3>Focus Mode sessions</h3>
+        <p>Slide to start a full-screen timer. No notifications, no taps out. If the app crashes mid-session it picks right back up. Extend on the fly when you're in flow.</p>
+      </div>
+
+      <div class="feat" data-reveal style="--reveal-delay: 80ms">
+        <div class="feat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+          </svg>
+        </div>
+        <h3>Goal linking that sticks</h3>
+        <p>Every day task can be linked to a week goal. Every week goal can be linked to a quarterly KR. Counter-based KRs even roll up automatically — knock out a day task, the quarterly number moves.</p>
+      </div>
+
+      <div class="feat feat--hermes" data-reveal style="--reveal-delay: 120ms">
+        <div class="feat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+        </div>
+        <h3>Guided planning wizards</h3>
+        <p>Weekly Launch Pad and Focus Future walk you through planning instead of staring at a blank page. You answer five questions; the app sets up your week or quarter.</p>
+      </div>
+
+      <div class="feat" data-reveal style="--reveal-delay: 160ms">
+        <div class="feat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+            <path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2z" />
+          </svg>
+        </div>
+        <h3>Streaks, trophies, XP</h3>
+        <p>18 trophies across day, week, and quarter wins. Earn XP per task. Rank up from Focused to Legendary. A light-touch gamification layer that respects your attention.</p>
+      </div>
+
+      <div class="feat feat--eos" data-reveal style="--reveal-delay: 200ms">
+        <div class="feat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 10 10" /><path d="M12 6v6l4 2" />
+          </svg>
+        </div>
+        <h3>The Anchor</h3>
+        <p>One sentence you wrote that you see every morning — your mindset, your why, whatever keeps you steady. Optional daily notification at the time you choose.</p>
+      </div>
+
+      <div class="feat" data-reveal style="--reveal-delay: 240ms">
+        <div class="feat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+        </div>
+        <h3>Weekly Promise Tracker</h3>
+        <p>A visual record of every week you kept your promise to yourself. Weeks under 80% crack. Weeks over 80% shine. Over months, it tells you the truth about your consistency.</p>
+      </div>
+
+      <div class="feat feat--hermes" data-reveal style="--reveal-delay: 280ms">
+        <div class="feat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+          </svg>
+        </div>
+        <h3>Someday Shelf</h3>
+        <p>Ideas you don't want to lose, but can't do this week. A single bookmarked shelf. Revisit on your next planning day — restore with one tap.</p>
+      </div>
+
+      <div class="feat" data-reveal style="--reveal-delay: 320ms">
+        <div class="feat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2v20" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+          </svg>
+        </div>
+        <h3>Cross-device sync</h3>
+        <p>Backed by Supabase (EU region). Your data syncs instantly across iPhone and iPad. Sign in with Apple, Google, or email.</p>
+      </div>
+
+      <div class="feat feat--eos" data-reveal style="--reveal-delay: 360ms">
+        <div class="feat__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+          </svg>
+        </div>
+        <h3>iOS-native polish</h3>
+        <p>Thoughtful haptics on every completion. Smooth dark-mode design. Built to feel like Apple ships it — because that's how focus tools should feel.</p>
+      </div>
+
+    </div>
+  </section>
+
   <section class="founder" id="founder">
     <div class="container">
-      <p class="eyebrow">Why I built this</p>
-      <div class="layout">
-        <div class="body">
-          <h2>I'm not a developer. I built this because nothing else was structured for one person, one quarter.</h2>
-          <p>
-            Every productivity app I tried offered the daily list and called it planning. The ones that took planning seriously buried it in team-OKR machinery — shared goals, weighted progress, end-of-period reviews. I wanted the personal-scale version. One person, two themes, thirteen weeks, no meeting at the end.
+      <div class="founder__layout">
+        <div>
+          <span class="eyebrow" data-reveal>Why I built this</span>
+          <h2 data-reveal style="--reveal-delay: 80ms">
+            I was switching <em>five apps</em> before breakfast.
+          </h2>
+          <p data-reveal style="--reveal-delay: 160ms">
+            Notion held my quarterly goals. Apple Reminders held today. My calendar knew the time but not the meaning. My notes app had last week's reflection in a file I'd never open again.
           </p>
-          <p>
-            So I built it. In a day. With AI as a pair-programmer. Focus Mode One is the tool I wanted on my phone for the kind of weeks where you finish busy and can't say what moved.
+          <p data-reveal style="--reveal-delay: 240ms">
+            Every Monday I spent an hour re-building the bridge between my big vision and the next five days. By Thursday, the bridge was gone again. I wasn't lacking discipline. I was lacking a single place where these three dimensions — quarter, week, today — were wired together by default.
           </p>
-          <p class="signature">— {AUTHOR.name}, {AUTHOR.jobTitle}</p>
+          <p data-reveal style="--reveal-delay: 320ms">
+            Focus Mode One is the tool I wished existed. It enforces the constraints that actually produce focus (three goals, not thirty), it builds the link between 90 days and 90 minutes for you, and it gets out of your way during the one hour that matters: when you're doing the work.
+          </p>
+          <p class="founder__sig" data-reveal style="--reveal-delay: 400ms">
+            — Pascal
+            <small>Founder · Focus Mode One</small>
+          </p>
         </div>
-        <div class="photo">
-          <img
-            src="/founder.jpg"
+        <div class="founder__image" data-reveal style="--reveal-delay: 160ms">
+          <Image
+            src={founderImage}
             alt="Pascal Weihrauch, founder of Focus Mode One"
+            widths={[340, 680, 1020]}
+            sizes="(max-width: 860px) 80vw, 340px"
             loading="lazy"
-            width="240"
-            height="240"
           />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 7. FINAL CTA ========== -->
-  <section class="final-cta" id="download">
+  <section class="final-cta">
     <div class="container">
-      <p class="eyebrow">Your next 90 days</p>
-      <h2>Pick one theme. Make thirteen weeks count.</h2>
-      <p class="lede">
-        Free for seven days. Less than the cost of a coffee thereafter. Cancel anytime — your local data stays yours.
+      <span class="eyebrow eyebrow--athena" data-reveal>Your next 90 days</span>
+      <h2 data-reveal style="--reveal-delay: 80ms">
+        Start shipping what <em>actually</em> matters.
+      </h2>
+      <p data-reveal style="--reveal-delay: 160ms">
+        Download Focus Mode One, run the Focus Future wizard in 10 minutes, and finish this week with three goals that connect directly to your quarter. 7&#8209;day free trial. No credit card required at sign-up.
       </p>
-      <div class="cta-row">
-        <DownloadButtons location="final" variant="primary" />
+      <div data-reveal style="--reveal-delay: 240ms">
+        <DownloadButtons location="final" variant="final" />
       </div>
-      <p class="trial">7-day free trial · No credit card required</p>
     </div>
   </section>
 </BaseLayout>
