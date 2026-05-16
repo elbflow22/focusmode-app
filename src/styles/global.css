@@ -117,7 +117,10 @@ html, body { margin: 0; padding: 0; background: #0E0E10; }
   color: var(--heading);
   font-weight: 500;
 }
-.fm1 .nav__brand img { width: 28px; height: 28px; border-radius: 7px; }
+/* Logo source is 1080x1185 (slightly non-square). object-fit: contain
+   shows the full mark with minimal letterbox; without it, forcing 28×28
+   either crops via sharp (if both Image dims set) or squashes via CSS. */
+.fm1 .nav__brand img { width: 28px; height: 28px; border-radius: 7px; object-fit: contain; }
 .fm1 .nav__links { display: flex; gap: 24px; align-items: center; }
 .fm1 .nav__links a { font-size: 14px; color: var(--muted); transition: color 0.15s ease; }
 .fm1 .nav__links a:hover { color: var(--heading); }
