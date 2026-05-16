@@ -15,7 +15,10 @@
 // will appear in autocapture with the cta=hero-ios property.
 
 const apiKey = import.meta.env.PUBLIC_POSTHOG_KEY;
-const apiHost = import.meta.env.PUBLIC_POSTHOG_HOST ?? 'https://eu.i.posthog.com';
+// `||` not `??`: when a GitHub Actions secret doesn't exist, the env var
+// is substituted as an empty string (not undefined), so nullish-coalescing
+// wouldn't fall through to the EU default.
+const apiHost = import.meta.env.PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com';
 ---
 
 {apiKey && (
